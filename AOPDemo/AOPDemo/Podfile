@@ -1,0 +1,4 @@
+use_frameworks!
+
+pod 'Aspects', '~> 1.4.1'
+pod 'ReactiveCocoa', '~> 4.0.1-alpha-3'
