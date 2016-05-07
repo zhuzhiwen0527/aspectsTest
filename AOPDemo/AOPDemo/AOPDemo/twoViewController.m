@@ -28,28 +28,45 @@
     _tf = [[UITextField alloc] initWithFrame:CGRectMake(100, 150, 200, 100)];
     _tf.backgroundColor = [UIColor greenColor];
     
-    
+    //监听tf
     [_tf.rac_textSignal subscribeNext:^(id x) {
        // NSLog(@"%@",x);
     }];
+    
+    //映射
+    [[_tf.rac_textSignal flattenMap:^RACStream *(id value) {
+      return [RACSignal return:[NSString stringWithFormat:@"输出:%@",value]];
+    }] subscribeNext:^(id x) {
+       // NSLog(@"映射:%@",x);
+    }];
+    
+    
+   [[ _tf.rac_textSignal map:^id(id value) {
+        return [NSString stringWithFormat:@"%@",value];
+    }] subscribeNext:^(id x) {
+         NSLog(@"映射:%@",x);
+    }];
+    
+    
     [self.view addSubview:_tf];
     
     _lab = [[UILabel alloc] initWithFrame:CGRectMake(100, 260, 200, 100)];
     _lab.backgroundColor = [UIColor grayColor];
     [self.view addSubview:_lab];
     
-    //tf 改变 lab改变
+    //tf 改变 lab的text改变
     RAC(_lab,text) = _tf.rac_textSignal;
     
     //kvo
     [RACObserve(_lab, text) subscribeNext:^(id x) {
         NSLog(@"text:%@",x);
     }];
-    
+    //kvo
     [[_lab rac_valuesAndChangesForKeyPath:@"text" options:NSKeyValueObservingOptionNew observer:nil]subscribeNext:^(id x) {
         
         NSLog(@"%@",x);
     }];
+    
     
 
 }
