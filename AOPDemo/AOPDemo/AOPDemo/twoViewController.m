@@ -7,20 +7,51 @@
 //
 
 #import "twoViewController.h"
-
+#import "ReactiveCocoa.h"
+#import "EXTScope.h"
 @interface twoViewController ()
-
+@property (nonatomic,copy)UITextField *tf;
+@property (nonatomic,copy)UILabel * lab;
 @end
 
 @implementation twoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.frame = CGRectMake(100, 100, 200, 100);
+    btn.frame = CGRectMake(100, 0, 200, 100);
     btn.backgroundColor = [UIColor blueColor];
     [btn addTarget:self action:@selector(print) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
+    
+    _tf = [[UITextField alloc] initWithFrame:CGRectMake(100, 150, 200, 100)];
+    _tf.backgroundColor = [UIColor greenColor];
+    
+    
+    [_tf.rac_textSignal subscribeNext:^(id x) {
+       // NSLog(@"%@",x);
+    }];
+    [self.view addSubview:_tf];
+    
+    _lab = [[UILabel alloc] initWithFrame:CGRectMake(100, 260, 200, 100)];
+    _lab.backgroundColor = [UIColor grayColor];
+    [self.view addSubview:_lab];
+    
+    //tf 改变 lab改变
+    RAC(_lab,text) = _tf.rac_textSignal;
+    
+    //kvo
+    [RACObserve(_lab, text) subscribeNext:^(id x) {
+        NSLog(@"text:%@",x);
+    }];
+    
+    [[_lab rac_valuesAndChangesForKeyPath:@"text" options:NSKeyValueObservingOptionNew observer:nil]subscribeNext:^(id x) {
+        
+        NSLog(@"%@",x);
+    }];
+    
+
 }
 - (void)print{
 
