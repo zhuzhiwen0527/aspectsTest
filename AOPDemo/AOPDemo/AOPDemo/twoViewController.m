@@ -12,6 +12,7 @@
 @interface twoViewController ()
 @property (nonatomic,copy)UITextField *tf;
 @property (nonatomic,copy)UILabel * lab;
+@property (nonatomic,strong)RACSignal * siganl;
 @end
 
 @implementation twoViewController
@@ -24,6 +25,19 @@
     btn.backgroundColor = [UIColor blueColor];
     [btn addTarget:self action:@selector(print) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
+    
+    self.siganl = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        
+        [subscriber sendNext:@1];
+        [subscriber sendCompleted];
+        
+        return nil;
+    }];
+    
+    RAC(btn,enabled) = self.siganl;
+    
+    
+    
     
     _tf = [[UITextField alloc] initWithFrame:CGRectMake(100, 150, 200, 100)];
     _tf.backgroundColor = [UIColor greenColor];
