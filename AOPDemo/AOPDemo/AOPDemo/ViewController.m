@@ -10,6 +10,7 @@
 #import "Aspects.h"
 #import "ReactiveCocoa.h"
 #import "twoViewController.h"
+#import "UIViewController+swizzling.h"
 @interface ViewController ()
 @property (nonatomic,strong)RACCommand * command;
 @end
@@ -17,7 +18,11 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
+    
+    
     [super viewDidLoad];
+    
+    
     self.view.backgroundColor = [UIColor whiteColor];
     UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(100, 100, 200, 100);
@@ -37,6 +42,8 @@
 
     
     [self racExample];
+    
+    
 }
 
 
@@ -179,7 +186,6 @@
     
     [self presentViewController:two animated:YES completion:nil];
  }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

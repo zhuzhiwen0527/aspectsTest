@@ -16,6 +16,7 @@
 		ED8536821CB630870092A17B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED8536801CB630870092A17B /* LaunchScreen.storyboard */; };
 		ED85368D1CB630870092A17B /* AOPDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ED85368C1CB630870092A17B /* AOPDemoTests.m */; };
 		ED8536981CB630870092A17B /* AOPDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8536971CB630870092A17B /* AOPDemoUITests.m */; };
+		EDC637261CF18B2A005C27B6 /* UIViewController+swizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC637251CF18B2A005C27B6 /* UIViewController+swizzling.m */; };
 		EDC70BE41CB6450600939F76 /* twoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC70BE31CB6450600939F76 /* twoViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,8 @@
 		ED8536931CB630870092A17B /* AOPDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AOPDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED8536971CB630870092A17B /* AOPDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AOPDemoUITests.m; sourceTree = "<group>"; };
 		ED8536991CB630870092A17B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDC637241CF18B2A005C27B6 /* UIViewController+swizzling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+swizzling.h"; sourceTree = "<group>"; };
+		EDC637251CF18B2A005C27B6 /* UIViewController+swizzling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+swizzling.m"; sourceTree = "<group>"; };
 		EDC70BE21CB6450600939F76 /* twoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = twoViewController.h; sourceTree = "<group>"; };
 		EDC70BE31CB6450600939F76 /* twoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = twoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,6 +134,8 @@
 				ED8536721CB630870092A17B /* Supporting Files */,
 				EDC70BE21CB6450600939F76 /* twoViewController.h */,
 				EDC70BE31CB6450600939F76 /* twoViewController.m */,
+				EDC637241CF18B2A005C27B6 /* UIViewController+swizzling.h */,
+				EDC637251CF18B2A005C27B6 /* UIViewController+swizzling.m */,
 			);
 			path = AOPDemo;
 			sourceTree = "<group>";
@@ -352,6 +357,7 @@
 			files = (
 				ED85367A1CB630870092A17B /* ViewController.m in Sources */,
 				ED8536771CB630870092A17B /* AppDelegate.m in Sources */,
+				EDC637261CF18B2A005C27B6 /* UIViewController+swizzling.m in Sources */,
 				ED8536741CB630870092A17B /* main.m in Sources */,
 				EDC70BE41CB6450600939F76 /* twoViewController.m in Sources */,
 			);
